@@ -1704,4 +1704,16 @@ footer {
         object-fit: contain !important;
         margin: 0 auto !important;
     }
+
+    .hero h1, .hero-content h1, .hero-title {
+        font-size: 2rem !important; /* Reduces size by roughly 50% */
+        word-break: normal !important; /* Stops words from splitting in half */
+        word-wrap: normal !important;
+        white-space: normal !important;
+        line-height: 1.2 !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
 }
+
