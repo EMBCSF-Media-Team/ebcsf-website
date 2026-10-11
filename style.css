@@ -1720,7 +1720,7 @@ footer {
     width: 100vw !important;
     height: 100vh !important;
     background-color: rgba(0, 0, 0, 0.95) !important;
-    display: block !important; /* Fixes script conflicts */
+    display: none; /* Fixes script conflicts */
 }
 
 #image-modal img.modal-content {
