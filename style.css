@@ -1657,6 +1657,35 @@ footer {
     font-family: 'Supreme-Bold', sans-serif !important;
 }
 
+.modal, .lightbox, #myModal {
+    position: fixed !important;
+    z-index: 9999 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.95) !important; /* Solid dark background */
+    animation: fadeIn 0.3s ease-in-out !important;
+}
+
+.modal-content, .modal img, .lightbox img {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important; /* Perfect dead-center alignment */
+    width: auto !important;
+    max-width: 95vw !important;
+    max-height: 85vh !important;
+    object-fit: contain !important;
+    border-radius: 8px !important;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.8) !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 
 /* ==========================================
    MOBILE RESPONSIVENESS FIXES
@@ -1677,10 +1706,12 @@ footer {
 
     /* 1. Restore the Logo and Scale to 50% */
     .logo img, .nav-logo {
-            width: 80% !important; /* Widened slightly so the text is legible */
-            max-width: 260px !important; 
-            margin: 10px 0 10px 15px !important;
-        }
+        width: 80% !important;
+        max-width: 260px !important;
+        height: auto !important; /* Prevents vertical squishing */
+        margin: 10px auto !important; /* Centers the logo on mobile */
+        display: block !important;
+    }
 
     .gallery-grid, 
     .photo-gallery,
