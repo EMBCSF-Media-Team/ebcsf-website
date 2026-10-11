@@ -1765,14 +1765,14 @@ footer {
     .logo {
         display: flex !important;
         align-items: center !important;
-        width: 115% !important; /* Strictly locks the container to 75% of the screen */
-        max-width: 115% !important;
+        width: 125% !important; /* Strictly locks the container to 75% of the screen */
+        max-width: 125% !important;
     }
 
     .nav-logo {
         width: 100% !important; /* Forces the extremely wide image to fit inside the 75% box */
         height: auto !important; 
-        max-height: 75px !important; /* Keeps it from getting too tall on larger phones */
+        max-height: 85px !important; /* Keeps it from getting too tall on larger phones */
         margin: 0 !important; 
         object-fit: contain !important;
         object-position: left center !important; 
