@@ -1656,3 +1656,41 @@ footer {
     color: #000000 !important;
     font-family: 'Supreme-Bold', sans-serif !important;
 }
+/* ==========================================
+   MOBILE RESPONSIVENESS FIXES
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. Force every element to stay inside the screen boundaries */
+    * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Fix the cut-off text and horizontal stretching */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Force all text to wrap normally */
+    p, h1, h2, h3, h4, span, div, header {
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+
+    /* 3. Aggressive 2-column gallery fix */
+    /* Targets flex containers or standard grid classes */
+    div[style*="flex"], .gallery, .grid, .row {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        flex-direction: unset !important;
+    }
+
+    img, iframe, video {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
