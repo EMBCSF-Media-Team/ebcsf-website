@@ -1776,7 +1776,8 @@ footer {
         margin: 0 !important; 
         object-fit: contain !important;
         object-position: left center !important; 
-        transform: translateY(8px) !important;
+        transform: scale(1.30) translateY(8px) !important; 
+        transform-origin: left center !important;
     }
     
     .burger-menu {
