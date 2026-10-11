@@ -1756,26 +1756,33 @@ footer {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 5px 15px !important; /* Gives breathing room on the edges */
+        padding: 10px 15px !important; 
+        width: 100vw !important;
+        box-sizing: border-box !important;
     }
 
     .logo {
         display: flex !important;
-        justify-content: flex-start !important;
-        flex: 1 !important;
+        align-items: center !important;
+        flex: 1 1 auto !important;
+        max-width: 80% !important; /* Strictly reserves the right side of the screen for the menu */
     }
 
     .nav-logo {
-        max-height: 75px !important; /* Sized larger to match your target photo */
-        width: auto !important;
-        margin: 0 !important; /* Removes the auto-centering that caused the overlap */
-        display: block !important;
+        width: 100% !important; 
+        max-width: 320px !important; 
+        height: auto !important; 
+        margin: 0 !important; 
+        object-fit: contain !important;
+        object-position: left center !important; /* Pins the logo to the left edge */
     }
     
     .burger-menu {
+        display: block !important;
         position: relative !important;
-        z-index: 100 !important; /* Keeps the menu clickable */
-        margin-left: 15px !important;
+        z-index: 100 !important; 
+        margin-left: 10px !important;
+        flex: 0 0 auto !important; /* Acts as a solid wall so the logo cannot crush it */
     }
 
     /* Mobile Gallery Grid */
