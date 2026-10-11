@@ -1756,22 +1756,23 @@ footer {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 10px 20px 10px 15px !important; 
+        padding: 10px 15px !important; 
         width: 100vw !important;
         box-sizing: border-box !important;
-        min-height: 80px !important; 
+        min-height: 70px !important; 
     }
 
     .logo {
         display: flex !important;
         align-items: center !important;
-        height: 100% !important;
+        width: 75% !important; /* Strictly locks the container to 75% of the screen */
+        max-width: 75% !important;
     }
 
     .nav-logo {
-        height: 50px !important; /* Locks the height for perfect readability */
-        width: auto !important; /* Prevents the circle symbol from squishing */
-        max-width: calc(100vw - 80px) !important; /* Safely reserves 80px of space for the menu */
+        width: 100% !important; /* Forces the extremely wide image to fit inside the 75% box */
+        height: auto !important; 
+        max-height: 60px !important; /* Keeps it from getting too tall on larger phones */
         margin: 0 !important; 
         object-fit: contain !important;
         object-position: left center !important; 
@@ -1781,8 +1782,8 @@ footer {
         display: block !important;
         position: relative !important;
         z-index: 100 !important; 
-        margin-left: 15px !important; 
-        flex-shrink: 0 !important; /* Prevents the menu from being crushed */
+        margin-left: auto !important; /* Pushes the menu to the absolute far right */
+        flex-shrink: 0 !important; 
     }
 
     /* Mobile Gallery Grid */
