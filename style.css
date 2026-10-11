@@ -1756,38 +1756,41 @@ footer {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 12px 15px !important; /* Increased top/bottom padding to push everything down */
+        padding: 10px 15px !important; 
         width: 100vw !important;
         box-sizing: border-box !important;
-        min-height: 75px !important; /* Forces the header to be taller */
+        min-height: 85px !important; /* Slightly taller to accommodate the zoomed logo */
     }
 
     .logo {
         display: flex !important;
         align-items: center !important;
-        flex: 1 1 auto !important;
-        max-width: 85% !important; /* Gives the logo a bit more horizontal room */
-        height: 100% !important;
+        flex: 1 !important; /* Takes up exactly the available space */
+        max-width: calc(100% - 50px) !important; /* Leaves a strict 50px safety zone for the burger menu */
     }
 
     .nav-logo {
         width: 100% !important; 
-        max-width: 360px !important; /* Scaled up significantly to be legible */
+        max-width: 400px !important; /* Lets it stretch as much as the phone allows */
         height: auto !important; 
         margin: 0 !important; 
         object-fit: contain !important;
         object-position: left center !important; 
-        transform: translateY(2px) !important; /* Nudges the logo down slightly to perfectly center it */
+        
+        /* The Magic Fix: Visually zooms the logo up by 25% */
+        transform: scale(1.25) !important; 
+        /* Locks the zoom to the left edge so it grows toward the middle, not off the screen */
+        transform-origin: left center !important; 
     }
     
     .burger-menu {
         display: block !important;
         position: relative !important;
         z-index: 100 !important; 
-        margin-left: 10px !important;
-        flex: 0 0 auto !important; 
+        margin-left: auto !important; 
+        flex-shrink: 0 !important; /* Makes the menu an un-crushable wall */
     }
-
+    
     /* Mobile Gallery Grid */
     .gallery-grid, 
     .photo-gallery,
