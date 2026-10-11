@@ -1660,37 +1660,48 @@ footer {
    MOBILE RESPONSIVENESS FIXES
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. Force every element to stay inside the screen boundaries */
-    * {
-        max-width: 100% !important;
-        box-sizing: border-box !important;
+    /* Core Reset: Fixes horizontal scrolling and text cut-offs */
+    html, body { 
+        overflow-x: hidden !important; 
+        width: 100vw !important; 
+    }
+    * { 
+        box-sizing: border-box !important; 
+    }
+    p, h1, h2, h3, h4, span { 
+        white-space: normal !important; 
+        word-wrap: break-word !important; 
     }
 
-    /* 2. Fix the cut-off text and horizontal stretching */
-    html, body {
-        overflow-x: hidden !important;
-        width: 100vw !important;
-        margin: 0 !important;
-        padding: 0 !important;
+    /* 1. Restore the Logo and Scale to 50% */
+    .logo img, .nav-logo {
+        display: block !important;
+        width: 50% !important;
+        max-width: 50% !important;
+        margin: 0 auto !important; /* Centers the logo */
     }
 
-    /* Force all text to wrap normally */
-    p, h1, h2, h3, h4, span, div, header {
-        white-space: normal !important;
-        word-wrap: break-word !important;
-    }
-
-    /* 3. Aggressive 2-column gallery fix */
-    /* Targets flex containers or standard grid classes */
-    div[style*="flex"], .gallery, .grid, .row {
+    /* 2. Force the Gallery into 2 Columns */
+    /* This wildcard targets any container with 'gallery' in its class name */
+    div[class*="gallery"] {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px !important;
-        flex-direction: unset !important;
     }
-
-    img, iframe, video {
+    
+    div[class*="gallery"] img {
         width: 100% !important;
         height: auto !important;
+    }
+
+    /* 3. Enlarge the Full Picture Preview (Lightbox) */
+    /* Overrides mobile restrictions on the popup modal */
+    .modal, .modal-content, [class*="modal"] img, .lightbox img {
+        width: 95vw !important;
+        max-width: 95vw !important;
+        height: auto !important;
+        max-height: 85vh !important;
+        object-fit: contain !important;
+        margin: 0 auto !important;
     }
 }
