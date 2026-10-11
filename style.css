@@ -1686,6 +1686,53 @@ footer {
     to { opacity: 1; }
 }
 
+/* ==========================================
+   1. GLOBAL LOGO FIX (Desktop & Mobile)
+   ========================================== */
+.logo {
+    display: flex !important;
+    align-items: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Target the exact class from your HTML */
+.nav-logo {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: 70px !important; /* Constrains height so it never breaks layout */
+    width: auto !important;
+}
+
+/* ==========================================
+   2. GALLERY MODAL FIX (Dimmed Background)
+   ========================================== */
+/* Targets the exact ID from your JavaScript */
+#image-modal {
+    position: fixed !important;
+    z-index: 99999 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.9) !important; /* Deep dark dimming */
+    /* When JS triggers 'flex', these align the image perfectly in the center */
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#image-modal img.modal-content {
+    max-width: 95vw !important;
+    max-height: 85vh !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    position: relative !important;
+    transform: none !important; /* Removes conflicts with flexbox */
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.8) !important;
+    border-radius: 4px !important;
+}
 
 /* ==========================================
    MOBILE RESPONSIVENESS FIXES
@@ -1704,69 +1751,56 @@ footer {
         word-wrap: break-word !important; 
     }
 
-    /* 1. Restore the Logo and Scale to 50% */
-    .logo img, .nav-logo {
-        width: 80% !important;
-        max-width: 260px !important;
-        height: auto !important; /* Prevents vertical squishing */
-        margin: 10px auto !important; /* Centers the logo on mobile */
+    /* Mobile Logo Scaling */
+    .nav-logo {
+        max-height: 50px !important; /* Scales down smoothly for phones */
+        margin: 10px auto !important;
         display: block !important;
     }
 
+    /* Mobile Gallery Grid */
     .gallery-grid, 
     .photo-gallery,
     .church-life-grid,
     div[class*="gallery"], 
     div[class*="grid"] {
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* Forces 2 columns as shown in sketch */
-        gap: 12px !important; /* Comfortable, compact spacing */
-        padding: 10px 15px !important; /* Keep a nice margin on the edges */
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        padding: 10px 15px !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
 
-    /* Target gallery item boxes and their images */
     .gallery-item,
     .photo-card,
     div[class*="gallery"] > div,
     div[class*="grid"] > div {
         width: 100% !important;
-        margin: 0 !important; /* Clear any conflicting auto margins */
+        margin: 0 !important;
     }
 
     div[class*="gallery"] img,
     div[class*="grid"] img,
     .gallery-grid img {
         width: 100% !important;
-        aspect-ratio: 1 / 1 !important; /* Forces images into neat square boxes */
-        object-fit: cover !important; /* Crops perfectly so they don't look squished */
+        aspect-ratio: 1 / 1 !important;
+        object-fit: cover !important;
         border-radius: 8px !important;
         display: block !important;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
     }
 
-    /* 3. Enlarge the Full Picture Preview (Lightbox) */
-    /* Overrides mobile restrictions on the popup modal */
-    .modal, .modal-content, [class*="modal"] img, .lightbox img {
-        width: 95vw !important;
-        max-width: 95vw !important;
-        height: auto !important;
-        max-height: 85vh !important;
-        object-fit: contain !important;
-        margin: 0 auto !important;
-    }
-
-    .hero h1, .hero-content h1, .hero-title {
-        font-size: 2rem !important; /* Reduces size by roughly 50% */
-        word-break: normal !important; /* Stops words from splitting in half */
+    /* Shrink Welcome Text */
+    .hero h1, .hero-content h1, .hero-title, .page-title-container h1 {
+        font-size: 2rem !important; 
+        word-break: normal !important; 
         word-wrap: normal !important;
         white-space: normal !important;
         line-height: 1.2 !important;
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
-
 }
 
