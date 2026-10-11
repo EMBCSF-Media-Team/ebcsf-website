@@ -1656,6 +1656,8 @@ footer {
     color: #000000 !important;
     font-family: 'Supreme-Bold', sans-serif !important;
 }
+
+
 /* ==========================================
    MOBILE RESPONSIVENESS FIXES
    ========================================== */
@@ -1674,19 +1676,12 @@ footer {
     }
 
     /* 1. Restore the Logo and Scale to 50% */
-    .logo, .navbar-brand, .mobile-logo {
-        display: block !important;
-        visibility: visible !important;
-        width: 100% !important;
-    }
-
     .logo img, .nav-logo {
-        display: block !important;
-        width: 50% !important;
-        max-width: 200px !important; 
-        margin: 10px 0 10px 15px !important; /* Adds slight padding and aligns left */
-    }
-    
+            width: 80% !important; /* Widened slightly so the text is legible */
+            max-width: 260px !important; 
+            margin: 10px 0 10px 15px !important;
+        }
+
     .gallery-grid, 
     .photo-gallery,
     .church-life-grid,
