@@ -1773,6 +1773,7 @@ footer {
         max-width: 85% !important;
     }
 
+
 /* Swap to the Mobile Logos */
     .desktop-logo {
         display: none !important; /* Hides the wide logo */
@@ -1781,33 +1782,35 @@ footer {
     .mobile-logo {
         display: block !important;
         width: 100% !important; 
-        max-width: 300px !important; /* Lets the text stretch out nicely */
+        max-width: 300px !important; 
         height: auto !important; 
         max-height: 45px !important; 
         margin: 0 !important; 
         object-fit: contain !important;
         object-position: left center !important; 
-        transform: translateY(14px) !important; /* Nudges it down to align with the burger menu */
-        border-radius: 50% !important; 
-        background-color: transparent !important;
-        
-        box-shadow: 0px 5px 15px rgba(0,0,0,0.4) !important;
+        transform: translateY(14px) !important; /* Nudges it down perfectly */
+        /* Removed the border-radius from here so your text doesn't get clipped! */
     }
 
     /* Style the symbol above the Welcome Text */
     .hero-symbol {
         display: block !important;
-        width: 120px !important; /* Sets the size of the symbol */
+        width: 120px !important; 
         height: auto !important;
-        margin: 0 auto 15px auto !important; /* Centers it and adds space below it */
-        box-shadow: 0px 5px 15px rgba(0,0,0,0.4) !important; /* Adds a nice shadow to pop off the background */
+        margin: 0 auto 15px auto !important; 
+        
+        /* The Magic Fix: Shaves off the square corners to make a perfect circle */
+        border-radius: 50% !important; 
+        background-color: transparent !important;
+        
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.4) !important;
     }
     
     .burger-menu {
         display: block !important;
         position: relative !important;
         z-index: 100 !important; 
-        margin-left: auto !important; /* Pushes the menu to the absolute far right */
+        margin-left: auto !important; 
         flex-shrink: 0 !important; 
     }
 
