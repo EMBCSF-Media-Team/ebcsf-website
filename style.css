@@ -1696,13 +1696,17 @@ footer {
     opacity: 1 !important;
 }
 
-/* Target the exact class from your HTML */
-.nav-logo {
+.desktop-logo {
     display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    max-height: 70px !important; /* Constrains height so it never breaks layout */
+    max-height: 70px !important; 
     width: auto !important;
+}
+
+/* Hide the mobile pieces on computer screens */
+.mobile-logo, .hero-symbol {
+    display: none !important;
 }
 
 /* ==========================================
@@ -1769,15 +1773,30 @@ footer {
         max-width: 85% !important;
     }
 
-    .nav-logo {
-        width: 100% !important; /* Forces the extremely wide image to fit inside the 75% box */
+/* Swap to the Mobile Logos */
+    .desktop-logo {
+        display: none !important; /* Hides the wide logo */
+    }
+
+    .mobile-logo {
+        display: block !important;
+        width: 100% !important; 
+        max-width: 300px !important; /* Lets the text stretch out nicely */
         height: auto !important; 
-        max-height: 65px !important; /* Keeps it from getting too tall on larger phones */
+        max-height: 45px !important; 
         margin: 0 !important; 
         object-fit: contain !important;
         object-position: left center !important; 
-        transform: scale(1.10) translateY(8px) !important; 
-        transform-origin: left center !important;
+        transform: translateY(3px) !important; /* Nudges it down to align with the burger menu */
+    }
+
+    /* Style the symbol above the Welcome Text */
+    .hero-symbol {
+        display: block !important;
+        width: 120px !important; /* Sets the size of the symbol */
+        height: auto !important;
+        margin: 0 auto 15px auto !important; /* Centers it and adds space below it */
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.4) !important; /* Adds a nice shadow to pop off the background */
     }
     
     .burger-menu {
