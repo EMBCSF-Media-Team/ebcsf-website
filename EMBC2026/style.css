@@ -1,0 +1,1658 @@
+@import url('css/supreme.css');
+
+/* Import Custom Amplitude Font */
+@font-face {
+    font-family: 'Amplitude Compressed';
+    src: url('fonts/Amplitude-Compressed-Light.woff2') format('woff2'); /* Change the filename/format if yours is different! */
+    font-weight: 300; /* Light weight */
+    font-style: normal;
+}
+
+/* =========================================
+   1. GLOBAL & BASE STYLES
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ACCESSIBILITY: Bumps the baseline font size for the whole site */
+html {
+    font-size: 18px; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h2 {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* ==========================================
+   GLOBAL TYPOGRAPHY (HEADERS)
+   ========================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Amplitude Compressed', sans-serif; 
+    color: #A22426; 
+    
+    /* THE FIX: Stops the browser from artificially smudging the thin letters */
+    font-weight: normal; 
+    
+    letter-spacing: normal; 
+}
+
+/* =========================================
+   2. BUTTONS & REUSABLE COMPONENTS
+   ========================================= */
+.btn-give {
+    background-color: #e74c3c;
+    color: white !important;
+    border-radius: 5px;
+    /* ACCESSIBILITY: Larger tap target for older users */
+    padding: 15px 30px; 
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #3498db;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Social Buttons */
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    color: white !important;
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    /* ACCESSIBILITY: Larger tap target */
+    padding: 15px 30px; 
+    font-size: 1.2rem;
+}
+
+.social-btn:hover { opacity: 0.8; }
+.facebook { background-color: #1877F2; }
+.youtube { background-color: #FF0000; }
+
+/* =========================================
+   3. HEADER & NAVIGATION (DESKTOP)
+   ========================================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10%; /* Reduced from 20px to 5px */
+    background-color: #3c3c3c;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    position: relative; /* Acts as an anchor */
+    height: 60px;      /* Keep the container the original size */
+}
+
+.nav-logo {
+    position: absolute;
+    top: -15px;        /* Moves it up slightly to center it */
+    height: 90px;      /* The 50% larger size */
+    width: auto;
+    z-index: 101;      /* Ensure it stays on top */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Keeps everything vertically centered */
+}
+
+.nav-links li {
+    padding: 0 15px; /* Slightly reduced to fit larger text */
+}
+
+/* ACCESSIBILITY: Larger, bolder navigation text */
+.nav-links li a {
+    text-decoration: none;
+    color: white; /* Changed to white */
+    font-size: 1.1rem; 
+    font-weight: 700;  
+    transition: color 0.3s ease;
+}
+
+/* Hover and Active page states */
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: #b92929; /* Changed to the new crimson highlight */
+}
+
+/* Header Social Icons */
+.nav-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 20px;
+    border-left: 1px solid #ccc;
+    margin-left: 10px;
+}
+
+.nav-social-icons a {
+    color: #2c3e50;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.nav-social-icons a:hover {
+    color: #3498db;
+}
+
+/* Burger Menu Setup (Hidden on Desktop) */
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.burger-menu div {
+    width: 25px;
+    height: 3px;
+    background-color: #A22426; /* Changed to crimson for both the burger and the X */
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* =========================================
+   4. MAIN PAGE SECTIONS
+   ========================================= */
+/* Hero Section */
+/* Hero Section Container */
+.hero {
+    position: relative; /* Acts as the anchor for the absolute layers inside */
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-color: #2c3e50; /* Fallback color */
+    overflow: hidden; /* Prevents layers from spilling out */
+}
+
+/* The Background Image Container */
+#hero-bg-container {
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    z-index: 0; /* Keeps images behind the text */
+}
+
+/* The Text Content */
+.hero-content {
+    position: relative;
+    z-index: 1; /* Forces the text to float on top of the images */
+}
+
+/* The Individual Image Layers (Generated by JavaScript) */
+.hero-slide {
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    opacity: 0; /* They spawn totally invisible */
+    transition: opacity 1.5s ease-in-out; /* The actual fade effect */
+}
+
+.hero-content h2 { font-size: 50px; margin-bottom: 10px; }
+.hero-content p { font-size: 20px; margin-bottom: 20px; }
+
+/* Weekly Events */
+.weekly-events {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.event-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.event-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 300px;
+    text-align: left;
+}
+
+.event-date {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Pastor Section */
+.pastor-section {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.pastor-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.pastor-text { flex: 1; }
+.pastor-image { flex: 1; text-align: right; }
+
+.pastor-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.pastor-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* ==========================================
+   FACEBOOK SECTION
+   ========================================== */
+.facebook-section {
+    background-color: #f9f9f9; /* Subtle off-white to separate it from the section above */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.facebook-section .section-header {
+    margin-bottom: 30px;
+}
+
+.facebook-embed-container {
+    display: flex;
+    justify-content: center; /* Perfectly centers the feed on the page */
+    align-items: center;
+    width: 100%;
+}
+
+/* Adds a crisp, modern shadow and rounded corners to the Facebook box */
+.facebook-embed-container iframe {
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    background-color: white; 
+}
+
+/* Location Section */
+.location-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.map-container {
+    margin-top: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Social Section */
+.social-section {
+    padding: 60px 0;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.social-links-large {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* ==========================================
+   GIVE PAGE LAYOUT
+   ========================================== */
+.give-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.give-card {
+    background-color: white;
+    padding: 40px 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-top: 4px solid #A22426; /* Your custom crimson color accent */
+    transition: transform 0.3s ease;
+}
+
+.give-card:hover {
+    transform: translateY(-5px); /* Makes the card lift slightly when hovered */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.zelle-color { color: #7411E2; }
+.cashapp-color { color: #00D632; }
+.mail-color { color: #555555; }
+
+.give-highlight {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333333;
+    margin: 20px 0;
+    letter-spacing: 1px;
+}
+
+.give-address {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin: 20px 0;
+}
+
+.qr-code {
+    width: 150px; /* Keeps the QR code from becoming massively pixelated */
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.small-text {
+    font-size: 0.9rem !important;
+    color: #888 !important;
+}
+
+/* ==========================================
+   GIVE PAGE SPECIFIC STYLES
+   ========================================== */
+
+/* The Dedicated Give Page Header Image */
+.give-header-image {
+    width: 100%;
+    margin-top: 0; 
+    display: flex;
+    justify-content: center; 
+}
+
+.give-header-image img {
+    width: 100%; 
+    max-width: 520px; /* Increased size by 30% */
+    height: auto; 
+    object-fit: contain; 
+    border-radius: 8px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+    cursor: pointer; /* Shows the user they can click it! */
+}
+
+/* ==========================================
+   QR CODE POPUP (MODAL) STYLES
+   ========================================== */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0,0,0,0.85); 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.modal-content {
+    max-width: 80%; 
+    max-height: 80%; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(255,255,255,0.2); 
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: #A22426; 
+}
+
+/* =========================================
+   5. SUB-PAGES (GALLERY & CALENDAR)
+   ========================================= */
+.page-header {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.page-header h2 { font-size: 36px; margin-bottom: 10px; }
+
+/* ==========================================
+   GALLERY
+   ========================================== */
+.gallery-container {
+    padding: 60px 10%;
+    background-color: #f9f9f9;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.photo-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 250px; /* Forces all images to be the same height for a clean grid */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+    cursor: pointer; /* Tells the user it can be clicked */
+}
+
+.photo-item img:hover { 
+    transform: scale(1.05); 
+}
+
+/* ==========================================
+   UNIVERSAL IMAGE POPUP (MODAL) STYLES
+   ========================================== */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0,0,0,0.85); 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.modal-content {
+    max-width: 80%; 
+    max-height: 80%; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(255,255,255,0.2); 
+    object-fit: contain; /* Ensures the expanded image is never cropped */
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: #A22426; /* Church crimson color on hover */
+}
+
+/* ==========================================
+   CALENDAR EMBED
+   ========================================== */
+.calendar-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.responsive-iframe-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* ACCESSIBILITY: Taller calendar and thicker border */
+    height: 800px; 
+    border: 3px solid #2c3e50;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.responsive-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ==========================================
+   CONTACT PAGE STYLES
+   ========================================== */
+.contact-section {
+    margin-bottom: 100px;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Makes the form wider than the info */
+    gap: 50px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contact-info h3 {
+    color: #A22426;
+    margin-bottom: 15px;
+    font-family: 'Amplitude Compressed', sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+/* Form Styles */
+.modern-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fcfcfc;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #A22426;
+    box-shadow: 0 0 0 3px rgba(162, 36, 38, 0.1); /* Soft crimson glow when typing */
+}
+
+.btn-submit {
+    background-color: #A22426;
+    color: white;
+    padding: 16px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-start; /* Keeps the button from stretching full width */
+}
+
+.btn-submit:hover {
+    background-color: #8a1d1f;
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness for Contact Layout */
+@media (max-width: 768px) {
+    .contact-layout {
+        grid-template-columns: 1fr; /* Stacks the info on top of the form on phones */
+        padding: 20px;
+    }
+}
+
+/* ==========================================
+   FORMSPREE ALERT MESSAGES
+   ========================================== */
+.form-alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    display: none; /* Handled automatically by Formspree JS */
+    align-items: center;
+    gap: 10px;
+}
+
+.success-alert {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.error-alert {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.field-error {
+    color: #c62828;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Fades the button slightly while submitting to show it is working */
+button[data-fs-submit-btn]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   YOUTH CAROUSEL STYLES
+   ========================================== */
+.youth-carousel-section {
+    margin-bottom: 60px;
+    padding: 0 20px;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 16/9; /* Keeps the slideshow perfectly rectangular on all screens */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background-color: #000;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0; /* Stretches the slide to fill the container */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Changed from 'cover' so absolutely no edges are cut off */
+    cursor: pointer; /* Turns the mouse into a clicking hand */
+}
+
+/* The Image Title overlay */
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 30px 20px 15px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Amplitude Compressed', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* The Next/Prev Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 3;
+    transition: background 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-btn:hover {
+    background: rgba(162, 36, 38, 0.9); /* Church crimson on hover */
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+@media (max-width: 600px) {
+    .carousel-caption { font-size: 1.2rem; padding: 20px 10px 10px 10px; }
+    .carousel-btn { width: 40px; height: 40px; font-size: 1.2rem; }
+}
+
+/* ==========================================
+   TABLE OF CONTENTS & ARTICLES (HISTORY PAGE)
+   ========================================== */
+html {
+    scroll-behavior: smooth; /* Enables the smooth gliding effect between links */
+}
+
+/* Floating Button */
+.toc-toggle-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    background-color: #A22426;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 999;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.toc-toggle-btn:hover {
+    background-color: #8a1d1f;
+    transform: translateY(-3px);
+}
+
+/* Side Menu Panel */
+.toc-menu {
+    position: fixed;
+    top: 0;
+    right: -350px; /* Hides the menu completely off-screen by default */
+    width: 300px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    z-index: 1000;
+    padding: 60px 30px 40px 30px;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth slide-in effect */
+    overflow-y: auto;
+}
+
+.toc-menu.open {
+    right: 0; /* Slides the menu into view */
+}
+
+.toc-menu h3 {
+    color: #A22426;
+    font-family: 'Amplitude Compressed', sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.toc-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.toc-menu ul li {
+    margin-bottom: 20px;
+}
+
+.toc-menu ul li a {
+    text-decoration: none;
+    color: #444;
+    font-size: 1.15rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.toc-menu ul li a:hover {
+    color: #A22426;
+}
+
+/* Close 'X' Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #A22426;
+}
+
+/* Articles Formatting */
+.article-block {
+    margin-bottom: 30px;
+    background: #fdfdfd;
+    padding: 25px;
+    border-left: 4px solid #A22426;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.article-block h4 {
+    color: #A22426;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.article-block p {
+    margin-bottom: 10px;
+}
+
+.article-block .scripture-ref {
+    font-size: 0.95rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 15px;
+}
+
+/* =========================================
+   6. FOOTER
+   ========================================= */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.footer-nav { margin-bottom: 20px; }
+.footer-nav a {
+    color: #bdc3c7;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+.footer-nav a:hover { color: white; }
+
+.footer-social { margin: 20px 0; }
+.footer-social a {
+    color: white;
+    font-size: 24px;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-social a:hover { color: #3498db; }
+
+    /* ==========================================
+    SUB-PAGE LAYOUTS (HISTORY, ETC)
+    ========================================== */
+
+    /* 1. The Main Page Title */
+    .page-title-container {
+        text-align: center; /* Centers the text perfectly */
+        margin-top: 130px; /* Pushes the title down so the floating header doesn't hide it */
+        margin-bottom: 40px; /* Gives nice breathing room between the text and the photo */
+    }
+
+    .page-title-container h1 {
+        font-size: 3.5rem; /* Makes it nice and large */
+        /* Your Global Typography rules will automatically apply the Amplitude font and #A22426 color to this! */
+    }
+
+    /* 2. The Centered & Reduced Image Header */
+    .page-header-image {
+        width: 100%;
+        margin-top: 0; /* Removed the old margin since the title handles the spacing now */
+        display: flex;
+        justify-content: center; 
+    }
+
+    .page-header-image img {
+        width: 70%; 
+        height: auto; 
+        max-height: 450px; 
+        object-fit: cover;
+        border-radius: 8px; 
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+    }
+
+    /* 2. Tightened Layout & Massive Footer Space */
+    .content-section {
+        margin-bottom: 120px; /* Creates the massive blank white space before the footer hits */
+    }
+
+    .text-layout {
+        max-width: 680px; 
+        margin: 0 auto;
+        padding: 60px 20px 20px 20px; 
+    }
+
+    /* 3. Extra Spacing Between Paragraphs & Headers */
+    .text-layout h3 {
+        margin-top: 80px; /* Increased massively to create a full "newline" break between sections */
+        margin-bottom: 20px;
+        color: #A22426; 
+    }
+
+    .text-layout p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        margin-bottom: 24px;
+        color: #444; 
+    }
+
+/* Blockquote for the Founding Members list */
+.founder-quote {
+    background-color: #f9f9f9;
+    border-left: 4px solid #A22426; 
+    padding: 20px 25px;
+    margin: 30px 0;
+    font-style: italic;
+    color: #555;
+    line-height: 1.7;
+    border-radius: 0 5px 5px 0;
+}
+
+.founder-quote strong {
+    font-style: normal;
+    color: #333333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+
+
+/* =========================================
+   7. MEDIA QUERIES (RESPONSIVE OVERRIDES)
+   ========================================= */
+
+/* TABLET NAVIGATION OVERRIDE */
+@media (max-width: 1750px) {
+    .burger-menu { display: block; }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #333333;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+    }
+
+    .nav-links.nav-active {
+        max-height: 600px;
+        opacity: 1;
+        padding: 20px 0;
+    }
+
+    .nav-links li { padding: 15px 0; }
+
+    .nav-social-icons {
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    /* Burger Icon Animations */
+    .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+    .toggle .line2 { opacity: 0; }
+    .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+}
+
+/* MOBILE PHONES OVERRIDE */
+@media (max-width: 768px) {
+    .hero-content h2 { font-size: 36px; }
+    
+    .event-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pastor-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pastor-image { text-align: center; }
+
+    .social-links-large {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-btn {
+        width: 80%;
+        justify-content: center;
+    }
+
+    .responsive-iframe-container {
+        height: 850px; /* Gives mobile calendar a bit more room */
+    }
+
+
+}
+
+/* ==========================================
+   UPDATED HERO SECTION (LANDING PAGE)
+   ========================================== */
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensures the text and buttons stay above the dark photo overlay */
+    text-align: center;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.hero-title {
+    /* Increased base size, much higher scale factor (12vw), and massive max limit (9rem) */
+    font-size: clamp(4.5rem, 12vw, 9rem);   
+    font-family: Supreme-Extrabold, sans-serif;
+    color: #ffffff; 
+    margin-bottom: 40px;
+    letter-spacing: -3px; /* Tighter spacing looks better at massive sizes */
+    line-height: 1.1;
+    
+    /* Double-layered shadow for intense contrast against photos */
+    text-shadow: 
+        2px 4px 15px rgba(0, 0, 0, 0.7), 
+        0px 0px 40px rgba(0, 0, 0, 0.4); 
+        
+    /* The exciting entrance animation */
+    animation: heroReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0; 
+}
+
+/* Add this right underneath to power the animation */
+@keyframes heroReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Container for the two buttons */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows buttons to stack nicely on small phone screens */
+}
+
+/* Base button styling */
+.btn-hero-primary, .btn-hero-secondary {
+    padding: 16px 40px;
+    font-size: 1.2rem;
+    font-family: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 50px; /* Modern pill shape */
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Space between the icon and the text */
+}
+
+/* Watch Live Button (Solid Red) */
+.btn-hero-primary {
+    background-color: #A22426;
+    color: #ffffff;
+    border: 2px solid #A22426;
+    box-shadow: 0 4px 15px rgba(162, 36, 38, 0.4);
+}
+
+.btn-hero-primary:hover {
+    background-color: #8a1d1f;
+    border-color: #8a1d1f;
+    transform: translateY(-4px); /* Slight lift effect */
+    box-shadow: 0 6px 20px rgba(162, 36, 38, 0.6);
+}
+
+/* Visit Us Button (Transparent Outline) */
+.btn-hero-secondary {
+    background-color: rgba(0, 0, 0, 0.3); /* Slight dark tint for readability */
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    backdrop-filter: blur(5px); /* Modern frosted glass effect */
+}
+
+.btn-hero-secondary:hover {
+    background-color: #ffffff;
+    color: #A22426;
+    transform: translateY(-4px);
+}
+
+/* Mobile Responsiveness for the Hero */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3.5rem; /* Scales the massive text down for phones */
+        margin-bottom: 30px;
+    }
+    
+    .hero-buttons {
+        gap: 15px;
+    }
+    
+    .btn-hero-primary, .btn-hero-secondary {
+        padding: 14px 30px;
+        font-size: 1rem;
+        width: 100%; /* Makes buttons full-width on tiny screens */
+        justify-content: center;
+    }
+}
+
+/* ==========================================
+   HOMEPAGE EVENT FLYER CAROUSEL (UPDATED)
+   ========================================== */
+.flyer-carousel-container {
+    position: relative;
+    max-width: 900px; /* Wide enough for landscape flyers */
+    margin: 0 auto;
+    background-color: transparent; /* No more black box! */
+}
+
+.flyer-slide {
+    display: none; /* Hide inactive slides */
+    width: 100%;
+    text-align: center; 
+}
+
+/* Let the active slide dictate the container's height */
+.flyer-slide.active {
+    display: block; 
+    animation: fadeFlyer 0.4s ease-in-out;
+}
+
+@keyframes fadeFlyer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.flyer-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 75vh; /* Prevents portrait flyers from overtaking desktop screens */
+    object-fit: contain; 
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Drop shadow applied directly to the image */
+    cursor: pointer; /* Suggests the image can be clicked */
+}
+
+/* Hover Navigation Buttons */
+.flyer-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(162, 36, 38, 0.8);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 3;
+    transition: background 0.3s ease, opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Invisible by default */
+}
+
+/* Reveal buttons when mouse enters the flyer area */
+.flyer-carousel-container:hover .flyer-btn {
+    opacity: 1; 
+}
+
+.flyer-btn:hover {
+    background: rgba(162, 36, 38, 1);
+}
+
+.prev-flyer { left: -25px; } /* Pushes arrows slightly outside the image */
+.next-flyer { right: -25px; }
+
+/* Mobile fallback */
+@media (max-width: 768px) {
+    .flyer-btn { 
+        width: 40px; height: 40px; font-size: 1.2rem; 
+        opacity: 1; /* Phones don't have hover, so buttons must stay visible */
+        left: 10px; right: auto; 
+    }
+    .next-flyer { right: 10px; left: auto; }
+}
+
+/* ==========================================
+   SIDE-BY-SIDE EVENTS LAYOUT (HOMEPAGE)
+   ========================================== */
+.events-split-layout {
+    display: flex;
+    flex-direction: row; /* Forces side-by-side */
+    flex-wrap: nowrap; /* Strictly forbids them from stacking on desktop */
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.events-left {
+    flex: 7;
+    min-width: 0; /* CRITICAL: Allows images to shrink instead of breaking the layout */
+    width: 100%;
+}
+
+.events-right {
+    flex: 3;
+    min-width: 300px; /* Gives the schedule cards enough room to breathe */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Force the calendar widget to stack vertically in the new side column */
+.events-right .event-grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.events-right .event-card {
+    width: 100%;
+}
+
+/* Mobile Responsiveness: Stack them back to normal on small screens */
+@media (max-width: 900px) {
+    .events-split-layout {
+        flex-direction: column;
+    }
+    
+    .events-left, .events-right {
+        width: 100%;
+    }
+
+    .events-right h3 {
+        text-align: center !important;
+        margin-top: 40px;
+    }
+    
+    .events-right .view-calendar-wrapper {
+        text-align: center !important;
+    }
+}
+
+/* ==========================================
+   LOADING SKELETONS
+   ========================================== */
+.skeleton-loader {
+    background: linear-gradient(90deg, #f4f4f4 25%, #e8e8e8 50%, #f4f4f4 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flyer-skeleton-box {
+    width: 100%;
+    aspect-ratio: 16/9; /* Keeps the loading box wide like a standard landscape flyer */
+    min-height: 350px;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ==========================================
+   YOUTH SPLIT LAYOUT (HOMEPAGE)
+   ========================================== */
+.youth-split-layout {
+    display: flex !important;
+    flex-direction: row !important; /* Brutally forces side-by-side */
+    flex-wrap: nowrap !important; /* Forbids stacking */
+    gap: 50px;
+    align-items: center; 
+}
+
+.youth-left {
+    flex: 6 !important; /* 60% width */
+    min-width: 0 !important; 
+    width: 100%;
+}
+
+.youth-right {
+    flex: 4 !important; /* 40% width */
+    min-width: 0 !important; 
+    width: 100%;
+}
+
+/* Homepage Carousel Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(162, 36, 38, 0.8);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease, opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Invisible by default */
+}
+
+/* Reveal buttons when mouse enters the carousel area */
+.carousel-container:hover .carousel-btn {
+    opacity: 1; 
+}
+
+.carousel-btn:hover {
+    background: rgba(162, 36, 38, 1);
+}
+
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+/* Mobile Responsiveness: ONLY stack on screens smaller than 900px */
+@media (max-width: 900px) {
+    .youth-split-layout {
+        flex-direction: column !important;
+    }
+    .youth-left, .youth-right {
+        flex: none !important;
+    }
+    .carousel-btn { 
+        opacity: 1; /* Keep buttons visible on phones */
+    }
+}
+
+/* ==========================================
+   WATCH ONLINE SPLIT LAYOUT (HOMEPAGE)
+   ========================================== */
+.watch-split-layout {
+    display: flex !important;
+    flex-direction: row !important; /* Forces side-by-side */
+    flex-wrap: nowrap !important; /* Forbids stacking on computer screens */
+    gap: 40px;
+    align-items: center; /* Centers the buttons vertically next to the video */
+}
+
+.watch-left {
+    flex: 7 !important; /* 70% width */
+    min-width: 0 !important;
+    width: 100%;
+}
+
+.watch-right {
+    flex: 3 !important; /* 30% width */
+    min-width: 0 !important;
+    width: 100%;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* This exactly equals 16:9 (9 divided by 16) */
+    height: 0; /* Forces the box to rely on the padding for its height */
+    background-color: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 2px solid #444;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Stacks the buttons cleanly */
+.stacked-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 280px; /* Keeps the buttons from stretching too wide */
+    margin: 0 auto;
+}
+
+.stacked-socials .social-btn {
+    width: 100%;
+    justify-content: center; /* Centers the icon and text inside the button */
+    padding: 16px 20px;
+}
+
+/* Mobile Responsiveness: Stack everything neatly on phones */
+@media (max-width: 900px) {
+    .watch-split-layout {
+        flex-direction: column !important;
+    }
+    .watch-left, .watch-right {
+        flex: none !important;
+    }
+    .stacked-socials {
+        max-width: 100%;
+    }
+}
+
+/* Update main section headers to Supreme Bold with scalable sizing */
+.section-header h2, 
+.pastor-section h2, 
+.watch-online-section h2, 
+.location-section h2 {
+    font-family: 'Supreme-Bold', sans-serif !important;
+    
+    /* 
+       clamp(minimum size, preferred scalable size, maximum size)
+       This keeps it at least 2rem on phones, scales with screen width (5vw), 
+       and caps out at a clean 3.5rem on large desktop monitors.
+    */
+    font-size: clamp(2rem, 5vw, 3.5rem) !important; 
+    
+    font-weight: 700 !important;
+    letter-spacing: -1px;
+}
+
+/* ==========================================
+   THEME RED OVERRIDES (FOOTER & BUTTONS)
+   ========================================== */
+
+/* 1. Update Footer to Theme Red */
+footer {
+    background-color: #5e1717 !important;
+    color: #ffffff !important;
+}
+
+/* Ensure footer links and icons are bright white */
+.footer-nav a, 
+.footer-social a {
+    color: #ffffff !important;
+    transition: opacity 0.3s ease;
+}
+
+.footer-nav a:hover, 
+.footer-social a:hover {
+    opacity: 0.7; /* Soft fade effect when hovering over links */
+}
+
+/* 2. Update 'Go to Calendar' (Secondary) Buttons */
+.btn-secondary {
+    background-color: #A22426 !important;
+    color: #ffffff !important;
+    border: 2px solid #A22426 !important; 
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Darker red hover effect for the button */
+.btn-secondary:hover {
+    background-color: #851c1f !important;
+    border-color: #851c1f !important;
+    color: #ffffff !important;
+}
+
+
+.pastor-section h2,
+.pastor-section h3,
+.youth-highlight-section h2,
+.youth-highlight-section h3 {
+    font-family: 'Supreme-Bold', sans-serif !important; 
+    font-weight: 700 !important; 
+    letter-spacing: -1px !important;
+    color: #A22426 !important; 
+    margin-bottom: 20px !important;
+}
+
+.youth-highlight-section h2,
+.youth-highlight-section h3 {
+    font-size: 1.8rem !important; /* Scaled up from the standard 1.5rem size */
+}
+
+.page-title-container p {
+    font-family: 'Supreme-Bold', sans-serif !important;
+    font-size: 1.1rem !important;
+    color: #B8860B !important; /* Rich goldenrod to complement the theme red */
+    text-transform: uppercase !important;
+    letter-spacing: 3px !important; /* Spreads the letters for a premium look */
+    margin-top: 10px !important;
+}
+
+/* ==========================================
+   WEEKLY EVENTS SECTION UPDATES
+   ========================================== */
+
+/* 1. Make the main "This Week at EMBC" header larger */
+.weekly-events h2 {
+    font-size: 2.25rem !important; /* Exactly half the size of your 4.5rem main page headers */
+    font-family: 'Supreme-Extrabold', sans-serif !important;
+    color: #B8860B !important; 
+}
+
+/* 2. Make the day icons theme red (overrides the #2c3e50 color) */
+.event-date {
+    background-color: #A22426 !important;
+}
+
+/* 3. Make the event title text gold and bold */
+.event-card h3,
+.event-card h4 {
+    color: #000000 !important;
+    font-family: 'Supreme-Bold', sans-serif !important;
+}

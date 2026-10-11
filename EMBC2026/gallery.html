@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | Ebenezer MBC</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/LOGO.png" alt="Ebenezer MBC Logo" class="nav-logo">
+            </a>
+        </div>
+        <nav>
+<ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="history.html">Our History</a></li>
+                <!-- Changed visible text to Donate -->
+                <li><a href="give.html">Donate</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="events.html">Calendar</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+                <li class="nav-social-icons">
+                    <a href="https://www.facebook.com/people/Ebenezer-Missionary-Baptist-Church-of-San-Francisco/100071600299907/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@ebenezerbaptistchurchsanfr9392" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </li>
+            </ul>
+
+            <div class="burger-menu" id="burger-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+<div class="page-title-container" style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+    <!-- Main Header (Reverted to original weight) -->
+    <h1 style="color: #A22426; margin-bottom: 5px;">
+        Church Life
+    </h1>
+    
+    <!-- Gold Uppercase Subheader -->
+    <p style="font-family: 'Supreme-Bold', sans-serif !important; font-size: 1.1rem !important; color: #B8860B !important; text-transform: uppercase !important; letter-spacing: 3px !important; margin-top: 10px !important;">
+        See what God is doing in our community.
+    </p>
+</div>
+
+    <section class="gallery-container" style="max-width: 1200px; margin: 0 auto; padding: 20px; margin-bottom: 120px; background-color: transparent;">
+        
+        <div class="photo-grid" id="placeholder-gallery">
+            <div class="photo-item"><img src="images/1.jpg" alt="Loading Gallery"></div>
+            <div class="photo-item"><img src="images/2.jpg" alt="Loading Gallery"></div>
+            <div class="photo-item"><img src="images/3.jpg" alt="Loading Gallery"></div>
+            <div class="photo-item"><img src="images/4.jpg" alt="Loading Gallery"></div>
+            <div class="photo-item"><img src="images/5.jpg" alt="Loading Gallery"></div>
+            <div class="photo-item"><img src="images/6.jpg" alt="Loading Gallery"></div>
+            <div class="photo-item"><img src="images/7.jpg" alt="Loading Gallery"></div>
+            <div class="photo-item"><img src="images/8.jpg" alt="Loading Gallery"></div>
+            <div class="photo-item"><img src="images/9.jpg" alt="Loading Gallery"></div>
+        </div>
+
+        <div class="photo-grid" id="dynamic-gallery" style="display: none;">
+            </div>
+
+    </section>
+
+    <footer>
+        <div class="footer-container">
+        <div class="footer-nav">
+                <a href="index.html">Home</a> | 
+                <a href="history.html">Our History</a> | 
+                <a href="give.html">Donate</a> | 
+                <a href="gallery.html">Gallery</a> | 
+                <a href="events.html">Calendar</a> | 
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="https://www.facebook.com/people/Ebenezer-Missionary-Baptist-Church-of-San-Francisco/100071600299907/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/@ebenezerbaptistchurchsanfr9392" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+
+                <p style="margin-top: 20px; margin-bottom: 10px; font-family: 'Supreme-Medium', sans-serif !important; font-size: 0.9rem !important; color: #B8860B !important;">
+                    Website Created by the EMBC Media Team
+                </p>
+
+                <p class="copyright">
+                    &copy; 2026 Ebenezer Missionary Baptist Church. All Rights Reserved.
+                </p>
+        </div>
+    </footer>
+
+    <div id="image-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-image" src="" alt="Expanded Image">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const placeholderGrid = document.getElementById('placeholder-gallery');
+            const dynamicGrid = document.getElementById('dynamic-gallery');
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            const closeModal = document.querySelector('.close-modal');
+
+            // 1. The Watcher: Instantly swaps the placeholder out when live photos arrive
+            if (placeholderGrid && dynamicGrid) {
+                // A MutationObserver watches the dynamic grid for changes
+                const observer = new MutationObserver(function() {
+                    if (dynamicGrid.children.length > 0) {
+                        placeholderGrid.style.display = 'none'; // Hide placeholders
+                        dynamicGrid.style.display = 'grid'; // Show live grid
+                        observer.disconnect(); // Stop watching to save memory
+                    }
+                });
+                
+                // Tell the observer to watch for new images being added
+                observer.observe(dynamicGrid, { childList: true });
+            }
+
+            // 2. The Popup Clicker: Works on both placeholder AND live images
+            const galleryContainer = document.querySelector('.gallery-container');
+            if (galleryContainer && modal && closeModal) {
+                galleryContainer.addEventListener('click', function(event) {
+                    if (event.target.tagName === 'IMG') {
+                        modalImg.src = event.target.src; 
+                        modal.style.display = 'flex';    
+                    }
+                });
+
+                closeModal.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+
+                window.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

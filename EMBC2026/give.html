@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give | Ebenezer Missionary Baptist Church</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/LOGO.png" alt="Ebenezer MBC Logo" class="nav-logo">            
+            </a>
+        </div>
+        <nav>
+<ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="history.html">Our History</a></li>
+                <!-- Changed visible text to Donate -->
+                <li><a href="give.html">Donate</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="events.html">Calendar</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+                <li class="nav-social-icons">
+                    <a href="https://www.facebook.com/people/Ebenezer-Missionary-Baptist-Church-of-San-Francisco/100071600299907/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@ebenezerbaptistchurchsanfr9392" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </li>
+            </ul>
+
+            <div class="burger-menu" id="burger-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-title-container">
+        <h1>Ways to Donate</h1>
+    </div>
+
+    <div class="give-header-image">
+        <img src="images/embcoffering.jpg" alt="Offering Plate" id="main-give-img">
+    </div>
+
+    <section class="content-section">
+        <div class="container text-layout" style="text-align: center;">
+            <p>Your generosity helps us continue our mission, maintain our church home, and serve the San Francisco community. We offer several secure ways to return your tithes and offerings.</p>
+            
+            <div class="give-grid">
+                <div class="give-card">
+                    <div class="card-icon zelle-color"><i class="fas fa-university"></i></div>
+                    <h3>Zelle</h3>
+                    <p>Send directly from your banking app using our official email address:</p>
+                    <div class="give-highlight">EMBC_SF@yahoo.com</div>
+                    <p class="small-text">Or scan the QR code below (click to expand):</p>
+                    <img src="images/zelleqr.jpg" alt="Zelle QR Code" class="qr-code" id="zelle-qr" style="cursor: pointer;">
+                </div>
+
+                <div class="give-card">
+                    <div class="card-icon cashapp-color"><i class="fas fa-dollar-sign"></i></div>
+                    <h3>CashApp</h3>
+                    <p>Give quickly and securely using our official Cashtag directly in the CashApp:</p>
+                    <div class="give-highlight">$EMBCSF1949</div>
+                </div>
+
+                <div class="give-card">
+                    <div class="card-icon mail-color"><i class="fas fa-envelope"></i></div>
+                    <h3>By Mail</h3>
+                    <p>You can safely mail a check or money order directly to the church office:</p>
+                    <div class="give-address">
+                        <strong>Ebenezer Missionary Baptist Church</strong><br>
+                        275 Divisadero St<br>
+                        San Francisco, CA 94117
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+        <div class="footer-nav">
+                <a href="index.html">Home</a> | 
+                <a href="history.html">Our History</a> | 
+                <a href="give.html">Donate</a> | 
+                <a href="gallery.html">Gallery</a> | 
+                <a href="events.html">Calendar</a> | 
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="https://www.facebook.com/people/Ebenezer-Missionary-Baptist-Church-of-San-Francisco/100071600299907/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/@ebenezerbaptistchurchsanfr9392" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+
+                <p style="margin-top: 20px; margin-bottom: 10px; font-family: 'Supreme-Medium', sans-serif !important; font-size: 0.9rem !important; color: #B8860B !important;">
+                    Website Created by the EMBC Media Team
+                </p>
+
+                <p class="copyright">
+                    &copy; 2026 Ebenezer Missionary Baptist Church. All Rights Reserved.
+                </p>
+        </div>
+    </footer>
+
+    <div id="image-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-image" src="" alt="Expanded Image">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Find both images on the page
+            const qrImg = document.getElementById('zelle-qr');
+            const mainImg = document.getElementById('main-give-img');
+            
+            // Find the popup window parts
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            const closeModal = document.querySelector('.close-modal');
+
+            // The function that actually opens the window
+            function openExpandedImage(imageSource) {
+                modalImg.src = imageSource; // Swaps the image to whichever one you clicked
+                modal.style.display = 'flex';
+            }
+
+            // Attach the clicks to the images
+            if (qrImg) {
+                qrImg.addEventListener('click', function() { openExpandedImage(this.src); });
+            }
+            if (mainImg) {
+                mainImg.addEventListener('click', function() { openExpandedImage(this.src); });
+            }
+
+            // Make the 'X' button close it
+            if (closeModal) {
+                closeModal.addEventListener('click', function() { modal.style.display = 'none'; });
+            }
+
+            // Make clicking the dark background close it
+            if (modal) {
+                window.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
