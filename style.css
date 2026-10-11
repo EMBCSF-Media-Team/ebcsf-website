@@ -1858,20 +1858,17 @@ footer {
        DONATE PAGE FIX (Mobile Card Stacking)
        ========================================== */
     .give-grid {
-        display: flex !important;
-        flex-direction: column !important; /* Forces the cards to stack vertically */
-        align-items: center !important;
-        gap: 20px !important; /* Adds space between each stacked card */
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* Forces a single vertical column */
+        gap: 25px !important; /* Adds breathing room between the stacked cards */
         width: 100% !important;
         padding: 0 10px !important;
-        box-sizing: border-box !important;
     }
 
     .give-card {
         width: 100% !important;
-        max-width: 400px !important; /* Keeps them from looking awkwardly wide on tablets */
-        margin: 0 auto !important; 
-        box-sizing: border-box !important;
+        max-width: 100% !important; 
+        margin: 0 !important;
     }
 }
 
