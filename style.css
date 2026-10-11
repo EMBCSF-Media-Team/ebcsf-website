@@ -1854,21 +1854,21 @@ footer {
         padding-right: 10px !important;
     }
 
-    /* ==========================================
-       DONATE PAGE FIX (Mobile Card Stacking)
+/* ==========================================
+       DONATE PAGE FIX (Bulletproof Override)
        ========================================== */
-    .give-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important; /* Forces a single vertical column */
+    section.content-section div.give-grid {
+        display: flex !important;
+        flex-direction: column !important; /* Forces a single vertical column */
         gap: 25px !important; /* Adds breathing room between the stacked cards */
         width: 100% !important;
         padding: 0 10px !important;
     }
 
-    .give-card {
+    section.content-section div.give-card {
         width: 100% !important;
         max-width: 100% !important; 
-        margin: 0 !important;
+        margin: 0 0 20px 0 !important;
     }
 }
 
