@@ -1756,7 +1756,7 @@ footer {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 10px 15px !important; 
+        padding: 25px 15px 10px 15px !important;
         width: 100vw !important;
         box-sizing: border-box !important;
         min-height: 70px !important; 
