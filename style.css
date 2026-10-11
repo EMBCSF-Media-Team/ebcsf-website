@@ -1756,25 +1756,28 @@ footer {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 10px 15px !important; 
+        padding: 12px 15px !important; /* Increased top/bottom padding to push everything down */
         width: 100vw !important;
         box-sizing: border-box !important;
+        min-height: 75px !important; /* Forces the header to be taller */
     }
 
     .logo {
         display: flex !important;
         align-items: center !important;
         flex: 1 1 auto !important;
-        max-width: 80% !important; /* Strictly reserves the right side of the screen for the menu */
+        max-width: 85% !important; /* Gives the logo a bit more horizontal room */
+        height: 100% !important;
     }
 
     .nav-logo {
         width: 100% !important; 
-        max-width: 320px !important; 
+        max-width: 360px !important; /* Scaled up significantly to be legible */
         height: auto !important; 
         margin: 0 !important; 
         object-fit: contain !important;
-        object-position: left center !important; /* Pins the logo to the left edge */
+        object-position: left center !important; 
+        transform: translateY(2px) !important; /* Nudges the logo down slightly to perfectly center it */
     }
     
     .burger-menu {
@@ -1782,7 +1785,7 @@ footer {
         position: relative !important;
         z-index: 100 !important; 
         margin-left: 10px !important;
-        flex: 0 0 auto !important; /* Acts as a solid wall so the logo cannot crush it */
+        flex: 0 0 auto !important; 
     }
 
     /* Mobile Gallery Grid */
