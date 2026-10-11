@@ -1710,6 +1710,51 @@ footer {
 }
 
 /* ==========================================
+   MOBILE JUMP TO TOP BUTTON
+   ========================================== */
+/* Completely hide on desktop */
+@media (min-width: 769px) {
+    .jump-to-top-btn {
+        display: none !important;
+    }
+}
+
+/* Style and behavior for mobile */
+@media (max-width: 768px) {
+    .jump-to-top-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: fixed !important;
+        bottom: 25px !important;
+        right: 25px !important;
+        z-index: 99999 !important;
+        background-color: #A22426 !important; /* Matches your church red */
+        color: white !important;
+        border: none !important;
+        border-radius: 50% !important;
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 22px !important;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4) !important;
+        cursor: pointer !important;
+        
+        /* Setup for the fade-in effect */
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: opacity 0.4s ease, visibility 0.4s ease !important;
+        transform: translateY(20px) !important; /* Starts slightly lower */
+    }
+
+    /* The class JavaScript will add to make it visible */
+    .jump-to-top-btn.show-btn {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important; /* Floats up into place */
+    }
+}
+
+/* ==========================================
    2. GALLERY MODAL FIX (Dimmed Background & Center)
    ========================================== */
 #image-modal {

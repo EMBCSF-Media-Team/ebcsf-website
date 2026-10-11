@@ -250,8 +250,11 @@
 
 <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // ==========================================
+            // 1. IMAGE CAROUSEL LOGIC
+            // ==========================================
             let currentSlide = 0;
-            let slideTimer; // Holds our auto-play timer
+            let slideTimer; 
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
 
@@ -277,34 +280,73 @@
             }
 
             function resetTimer() {
-                clearInterval(slideTimer); // Stop the current timer
-                slideTimer = setInterval(nextSlide, 5000); // Start a new 5-second timer
+                clearInterval(slideTimer); 
+                slideTimer = setInterval(nextSlide, 5000); 
             }
 
             if(prevBtn && nextBtn) {
                 nextBtn.addEventListener('click', () => { 
                     nextSlide(); 
-                    resetTimer(); // Reset timer if user clicks
+                    resetTimer(); 
                 });
                 
                 prevBtn.addEventListener('click', () => { 
                     currentSlide--; 
                     updateCarousel(); 
-                    resetTimer(); // Reset timer if user clicks
+                    resetTimer(); 
                 });
             }
 
-            // Tell the buttons and timer to wake up once the Google images load in
             const observer = new MutationObserver(() => {
                 currentSlide = 0;
                 updateCarousel();
-                resetTimer(); // Kick off the auto-play
+                resetTimer(); 
             });
             
             if (document.getElementById('dynamic-carousel')) {
                 observer.observe(document.getElementById('dynamic-carousel'), { childList: true });
             }
+
+            // ==========================================
+            // 2. MOBILE JUMP TO TOP LOGIC
+            // ==========================================
+            const jumpBtn = document.getElementById("jump-to-top");
+            const allHeaders = document.querySelectorAll("h1, h2, h3, h4");
+            let commitmentHeader = null;
+            
+            // Search the page for the "Our Commitment" header
+            allHeaders.forEach(function(header) {
+                if (header.textContent.toLowerCase().includes("our commitment")) {
+                    commitmentHeader = header;
+                }
+            });
+
+            // Only run the scroll tracker if both the button and header exist
+            if (jumpBtn && commitmentHeader) {
+                window.addEventListener("scroll", function() {
+                    const headerPosition = commitmentHeader.getBoundingClientRect().top;
+                    
+                    // Show button when "Our Commitment" hits the top of the screen
+                    if (headerPosition < 50) {
+                        jumpBtn.classList.add("show-btn");
+                    } else {
+                        jumpBtn.classList.remove("show-btn");
+                    }
+                });
+
+                // Scroll smoothly to top on click
+                jumpBtn.addEventListener("click", function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                });
+            }
         });
     </script>
+    <!-- Mobile Jump to Top Button -->
+    <button id="jump-to-top" class="jump-to-top-btn" aria-label="Jump to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 </body>
 </html>
