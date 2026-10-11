@@ -1788,7 +1788,7 @@ footer {
         margin: 0 !important; 
         object-fit: contain !important;
         object-position: left center !important; 
-        transform: scale(1.15) translateY(20px) !important; /* Nudges it down perfectly */
+        transform: scale(1.05) translateY(20px) !important; /* Nudges it down perfectly */
         /* Removed the border-radius from here so your text doesn't get clipped! */
     }
 
