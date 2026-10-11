@@ -1681,17 +1681,38 @@ footer {
         margin: 0 auto !important; /* Centers the logo */
     }
 
-    /* 2. Force the Gallery into 2 Columns */
-    /* This wildcard targets any container with 'gallery' in its class name */
-    div[class*="gallery"] {
+    .gallery-grid, 
+    .photo-gallery,
+    .church-life-grid,
+    div[class*="gallery"], 
+    div[class*="grid"] {
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
-    }
-    
-    div[class*="gallery"] img {
+        grid-template-columns: repeat(2, 1fr) !important; /* Forces 2 columns as shown in sketch */
+        gap: 12px !important; /* Comfortable, compact spacing */
+        padding: 10px 15px !important; /* Keep a nice margin on the edges */
         width: 100% !important;
-        height: auto !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Target gallery item boxes and their images */
+    .gallery-item,
+    .photo-card,
+    div[class*="gallery"] > div,
+    div[class*="grid"] > div {
+        width: 100% !important;
+        margin: 0 !important; /* Clear any conflicting auto margins */
+    }
+
+    div[class*="gallery"] img,
+    div[class*="grid"] img,
+    .gallery-grid img {
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important; /* Forces images into neat square boxes */
+        object-fit: cover !important; /* Crops perfectly so they don't look squished */
+        border-radius: 8px !important;
+        display: block !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
     }
 
     /* 3. Enlarge the Full Picture Preview (Lightbox) */
