@@ -1756,7 +1756,7 @@ footer {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 25px 15px 10px 15px !important;
+        padding: 10px 15px !important;
         width: 100vw !important;
         box-sizing: border-box !important;
         min-height: 70px !important; 
@@ -1776,6 +1776,7 @@ footer {
         margin: 0 !important; 
         object-fit: contain !important;
         object-position: left center !important; 
+        transform: translateY(8px) !important;
     }
     
     .burger-menu {
