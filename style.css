@@ -1751,11 +1751,31 @@ footer {
         word-wrap: break-word !important; 
     }
 
-    /* Mobile Logo Scaling */
+/* Header Layout & Mobile Logo Scaling */
+    header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 5px 15px !important; /* Gives breathing room on the edges */
+    }
+
+    .logo {
+        display: flex !important;
+        justify-content: flex-start !important;
+        flex: 1 !important;
+    }
+
     .nav-logo {
-        max-height: 50px !important; /* Scales down smoothly for phones */
-        margin: 10px auto !important;
+        max-height: 75px !important; /* Sized larger to match your target photo */
+        width: auto !important;
+        margin: 0 !important; /* Removes the auto-centering that caused the overlap */
         display: block !important;
+    }
+    
+    .burger-menu {
+        position: relative !important;
+        z-index: 100 !important; /* Keeps the menu clickable */
+        margin-left: 15px !important;
     }
 
     /* Mobile Gallery Grid */
