@@ -1765,8 +1765,8 @@ footer {
     .logo {
         display: flex !important;
         align-items: center !important;
-        width: 85% !important; /* Strictly locks the container to 75% of the screen */
-        max-width: 85% !important;
+        width: 100% !important; /* Strictly locks the container to 75% of the screen */
+        max-width: 100% !important;
     }
 
     .nav-logo {
