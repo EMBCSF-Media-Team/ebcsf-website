@@ -1787,7 +1787,11 @@ footer {
         margin: 0 !important; 
         object-fit: contain !important;
         object-position: left center !important; 
-        transform: translateY(3px) !important; /* Nudges it down to align with the burger menu */
+        transform: translateY(14px) !important; /* Nudges it down to align with the burger menu */
+        border-radius: 50% !important; 
+        background-color: transparent !important;
+        
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.4) !important;
     }
 
     /* Style the symbol above the Welcome Text */
